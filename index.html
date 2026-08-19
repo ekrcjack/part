@@ -130,6 +130,8 @@ li.speaking .play{border-color:var(--shu);background:var(--shu);color:#fff}
   color:var(--sumi);cursor:pointer;border-radius:2px;
 }
 .allbtn:hover{border-color:var(--ink);color:var(--ink)}
+.allbtn.playing{border-color:var(--shu);background:var(--shu);color:#fff}
+.cellall{margin-top:2px;font-size:11px;padding:4px 9px;letter-spacing:.04em;white-space:nowrap}
 .empty{padding:40px 0;text-align:center;color:var(--sumi);font-size:14px}
 footer{max-width:860px;margin:44px auto 0;padding:16px;border-top:1px solid var(--line);
   font-size:11.5px;color:var(--sumi);line-height:1.9}
@@ -378,6 +380,7 @@ function render(){
       <div class="cell">
         <div class="glyph jp${it.p.length>1?' sm':''}">${it.p}</div>
         <div class="romaji">${it.r}</div>
+        <button class="allbtn cellall" data-all="1" title="連續播放「${it.p}」的全部例句">▶ 全部 ${it.ex.length}</button>
       </div>
       <div class="body">
         <p class="gist">${it.gist}</p>
@@ -394,7 +397,7 @@ function render(){
             <button class="play" data-say="${clean(e.j)}" aria-label="播放發音">${ICON}</button>
           </li>`).join('')}
         </ol>
-        <button class="allbtn" data-all="1">▶ 連續播放五個例句</button>
+        <button class="allbtn" data-all="1">▶ 連續播放 ${it.ex.length} 個例句</button>
       </div>`;
       list.appendChild(c);
     });
@@ -413,7 +416,12 @@ render();
 
 /* ── speech ── */
 const synth=window.speechSynthesis;
-let jaVoice=null,keep=null,current=null,queue=[];
+let jaVoice=null,keep=null,current=null,queue=[],allCard=null;
+function setAllBtn(card){
+  document.querySelectorAll(".allbtn.playing").forEach(b=>b.classList.remove("playing"));
+  if(card)card.querySelectorAll(".allbtn").forEach(b=>b.classList.add("playing"));
+  allCard=card||null;
+}
 function pick(){
   if(!synth)return;
   const v=synth.getVoices();
@@ -429,6 +437,7 @@ function stop(){
   queue=[];if(keep){clearInterval(keep);keep=null;}
   if(synth)synth.cancel();
   if(current){current.classList.remove('speaking');current=null;}
+  setAllBtn(null);
 }
 function say(text,li,after){
   if(!synth)return;
@@ -452,16 +461,19 @@ function say(text,li,after){
 }
 function runQueue(){
   const next=queue.shift();
-  if(!next)return;
+  if(!next){setAllBtn(null);return;}
   say(next.t,next.li,runQueue);
 }
 document.addEventListener('click',e=>{
   const p=e.target.closest('.play');
-  if(p){queue=[];say(p.dataset.say,p.closest('li'));return;}
+  if(p){queue=[];setAllBtn(null);say(p.dataset.say,p.closest('li'));return;}
   const a=e.target.closest('.allbtn');
   if(a){
+    const card=a.closest('.card');
+    if(card===allCard){stop();return;}
     stop();
-    queue=[...a.parentElement.querySelectorAll('.play')].map(b=>({t:b.dataset.say,li:b.closest('li')}));
+    setAllBtn(card);
+    queue=[...card.querySelectorAll('.play')].map(b=>({t:b.dataset.say,li:b.closest('li')}));
     runQueue();
   }
 });
