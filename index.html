@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日本語 助詞大全 ─ 用法・例文・發音</title>
+<style>
+:root{
+  --ink:#14202e;
+  --paper:#f6f6f2;
+  --paper2:#fdfdfb;
+  --grid:#b9c7d6;
+  --shu:#bf3b2f;
+  --ai:#2f5f8f;
+  --sumi:#5c6773;
+  --line:#dfe2dc;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:16px;line-height:1.75;
+  padding-bottom:64px;
+}
+.jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Songti TC",serif}
+
+/* ── top bar ── */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,246,242,.94);
+  backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.hwrap{max-width:860px;margin:0 auto;padding:12px 16px 10px}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand h1{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:21px;margin:0;letter-spacing:.06em;font-weight:600;
+}
+.brand span{font-size:11px;letter-spacing:.22em;color:var(--sumi);text-transform:uppercase}
+.tools{display:flex;gap:8px;margin-top:10px;align-items:center}
+input[type=search]{
+  flex:1;min-width:0;font:inherit;font-size:14px;
+  padding:8px 12px;border:1px solid var(--line);border-radius:2px;
+  background:var(--paper2);color:var(--ink);
+}
+input[type=search]:focus{outline:2px solid var(--ai);outline-offset:1px}
+.rate{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--sumi);white-space:nowrap}
+.rate input{width:70px;accent-color:var(--shu)}
+.chips{display:flex;gap:6px;margin-top:9px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  font:inherit;font-size:12px;letter-spacing:.05em;white-space:nowrap;
+  padding:5px 11px;border:1px solid var(--line);background:transparent;
+  color:var(--sumi);border-radius:999px;cursor:pointer;
+}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper2)}
+.warn{max-width:860px;margin:10px auto 0;padding:8px 14px;font-size:12.5px;
+  border-left:3px solid var(--shu);background:#fbeeec;color:#7a2a22;display:none}
+
+main{max-width:860px;margin:0 auto;padding:0 16px}
+
+/* ── group heading ── */
+.group{margin:36px 0 14px;display:flex;align-items:center;gap:12px}
+.group b{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:15px;letter-spacing:.14em;font-weight:600}
+.group i{font-style:normal;font-size:11px;color:var(--sumi);letter-spacing:.08em}
+.group hr{flex:1;border:0;border-top:1px solid var(--line);margin:0}
+
+/* ── card ── */
+.card{
+  background:var(--paper2);border:1px solid var(--line);
+  display:grid;grid-template-columns:112px 1fr;gap:0;margin-bottom:14px;
+}
+.cell{
+  border-right:1px solid var(--line);
+  padding:16px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:
+    linear-gradient(var(--grid),var(--grid)) center/100% 1px no-repeat,
+    linear-gradient(var(--grid),var(--grid)) center/1px 100% no-repeat,
+    var(--paper2);
+  background-size:56px 1px,1px 56px;
+  position:relative;
+}
+.glyph{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:40px;line-height:1;color:var(--ink);
+  width:72px;height:72px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--grid);background:rgba(255,255,255,.75);
+}
+.glyph.sm{font-size:24px}
+.romaji{font-size:10.5px;letter-spacing:.18em;color:var(--sumi);text-transform:uppercase}
+.body{padding:15px 16px 16px}
+.gist{font-size:15px;font-weight:600;margin:0 0 6px;letter-spacing:.01em}
+.rule{
+  font-size:12.5px;color:var(--sumi);line-height:1.7;
+  border-left:2px solid var(--grid);padding-left:10px;margin:0 0 12px;
+}
+.rule code{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--ai);font-size:13px}
+
+/* ── examples ── */
+ol{list-style:none;margin:0;padding:0;counter-reset:ex}
+li{padding:9px 0;border-top:1px dashed var(--line);display:flex;gap:10px;align-items:flex-start}
+li:first-child{border-top:1px solid var(--line)}
+.num{
+  counter-increment:ex;font-size:10px;color:var(--sumi);
+  padding-top:5px;min-width:14px;font-variant-numeric:tabular-nums;
+}
+.num::before{content:counter(ex)}
+.ex{flex:1;min-width:0}
+.sent{font-size:18px;line-height:1.9;letter-spacing:.02em}
+.mk{color:var(--shu);font-weight:600;border-bottom:2px solid rgba(191,59,47,.35);padding:0 1px}
+.kana{font-size:12.5px;color:var(--sumi);letter-spacing:.03em;margin-top:2px}
+.zh{font-size:13.5px;margin-top:3px}
+.note{font-size:12px;color:var(--ai);margin-top:3px}
+.play{
+  flex:0 0 auto;margin-top:4px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper2);color:var(--ink);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;
+}
+.play:hover{border-color:var(--shu);color:var(--shu)}
+.play:focus-visible{outline:2px solid var(--ai);outline-offset:2px}
+.play svg{width:13px;height:13px;fill:currentColor}
+li.speaking{background:rgba(191,59,47,.05)}
+li.speaking .play{border-color:var(--shu);background:var(--shu);color:#fff}
+.allbtn{
+  margin-top:12px;font:inherit;font-size:12px;letter-spacing:.06em;
+  padding:6px 13px;border:1px solid var(--line);background:transparent;
+  color:var(--sumi);cursor:pointer;border-radius:2px;
+}
+.allbtn:hover{border-color:var(--ink);color:var(--ink)}
+.empty{padding:40px 0;text-align:center;color:var(--sumi);font-size:14px}
+footer{max-width:860px;margin:44px auto 0;padding:16px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--sumi);line-height:1.9}
+@media (max-width:560px){
+  .card{grid-template-columns:1fr}
+  .cell{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;justify-content:flex-start;gap:12px;padding:12px 14px;background-size:0,0}
+  .glyph{width:52px;height:52px;font-size:28px}
+  .glyph.sm{font-size:17px}
+  .sent{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hwrap">
+    <div class="brand">
+      <h1 class="jp">日本語　助詞大全</h1>
+      <span>Particles · N5–N4</span>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="搜尋助詞、用法或中文（例：から、原因、只有）">
+      <label class="rate">語速<input type="range" id="rate" min="0.5" max="1.2" step="0.05" value="0.85"></label>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+<div class="warn" id="warn">此瀏覽器尚未載入日文語音。iOS／Android 請用系統瀏覽器並開啟音量；Android 可於「設定 → 語言與輸入 → 文字轉語音」下載日文語音包。</div>
+
+<main id="list"></main>
+
+<footer>
+  發音採用瀏覽器內建語音合成（Web Speech API），語速可於上方調整。<br>
+  例句中的<span class="mk">朱色</span>標記即為該助詞出現位置。
+</footer>
+
+<script>
+const DATA=[
+{g:"格助詞",gn:"接在名詞後，決定名詞與動詞的關係",items:[
+ {p:"は",r:"wa",gist:"提示主題：「至於～」",rule:"名詞＋は。寫作「は」但讀作 <code>wa</code>。提示<b>已知的話題</b>或作<b>對比</b>；「が」則用來敘述新資訊。否定句、比較句多半用は。",ex:[
+  {j:"私【は】台湾人です。",k:"わたしはたいわんじんです。",z:"我是台灣人。"},
+  {j:"今日【は】暑いですね。",k:"きょうはあついですね。",z:"今天真熱呢。"},
+  {j:"肉【は】食べますが、魚【は】食べません。",k:"にくはたべますが、さかなはたべません。",z:"肉會吃，但魚不吃。",n:"對比用法：兩個は成對出現"},
+  {j:"田中さん【は】もう帰りました。",k:"たなかさんはもうかえりました。",z:"田中先生已經回去了。"},
+  {j:"この店【は】あまり高くありません。",k:"このみせはあまりたかくありません。",z:"這家店不太貴。",n:"否定句傾向用は"}]},
+ {p:"が",r:"ga",gist:"主語・新資訊・對象語",rule:"名詞＋が。① 疑問詞當主語（誰が／何が）②「有／在」的存在主體 ③ <code>好き・嫌い・上手・下手・できる・分かる・ほしい</code> 的對象一律用が。",ex:[
+  {j:"誰【が】来ましたか。",k:"だれがきましたか。",z:"誰來了？",n:"疑問詞當主語不可用は"},
+  {j:"机の上に猫【が】います。",k:"つくえのうえにねこがいます。",z:"桌上有一隻貓。"},
+  {j:"私は日本語【が】好きです。",k:"わたしはにほんごがすきです。",z:"我喜歡日文。",n:"好き的對象用が"},
+  {j:"頭【が】痛いです。",k:"あたまがいたいです。",z:"我頭痛。",n:"身體感覺的主體"},
+  {j:"新しいパソコン【が】ほしいです。",k:"あたらしいパソコンがほしいです。",z:"想要一台新電腦。",n:"ほしい的對象用が"}]},
+ {p:"を",r:"o",gist:"受詞・離開點・經過點",rule:"名詞＋を。讀作 <code>o</code>。① 他動詞的受詞 ② 離開的場所（<code>出る・降りる・卒業する</code>）③ 移動經過的場所（<code>歩く・散歩する・渡る・曲がる</code>）。",ex:[
+  {j:"毎朝パン【を】食べます。",k:"まいあさパンをたべます。",z:"每天早上吃麵包。"},
+  {j:"七時に家【を】出ます。",k:"しちじにいえをでます。",z:"七點出門。",n:"離開的起點"},
+  {j:"公園【を】散歩します。",k:"こうえんをさんぽします。",z:"在公園散步。",n:"經過的場所，不用で"},
+  {j:"音楽【を】聞きながら勉強します。",k:"おんがくをききながらべんきょうします。",z:"一邊聽音樂一邊唸書。"},
+  {j:"去年大学【を】卒業しました。",k:"きょねんだいがくをそつぎょうしました。",z:"去年大學畢業了。",n:"卒業する用を"}]},
+ {p:"に",r:"ni",gist:"時間點・歸著點・對象・存在場所",rule:"名詞＋に。① 具體時間（<code>八時に</code>；今日・明日不加に）② 到達點（<code>着く・入る・乗る</code>）③ 動作對象（<code>～にあげる・に会う</code>）④ 存在場所（<code>ある・いる</code>）⑤ 目的（<code>ます形＋に行く</code>）。",ex:[
+  {j:"毎朝六時【に】起きます。",k:"まいあさろくじにおきます。",z:"每天早上六點起床。"},
+  {j:"友達【に】電話をかけます。",k:"ともだちにでんわをかけます。",z:"打電話給朋友。",n:"動作的對象"},
+  {j:"教室【に】学生がいます。",k:"きょうしつにがくせいがいます。",z:"教室裡有學生。",n:"存在的場所用に，動作的場所用で"},
+  {j:"机の上【に】鍵を置きました。",k:"つくえのうえにかぎをおきました。",z:"把鑰匙放在桌上。",n:"歸著點"},
+  {j:"デパートへ買い物【に】行きます。",k:"デパートへかいものにいきます。",z:"去百貨公司買東西。",n:"目的：ます形＋に行く"}]},
+ {p:"へ",r:"e",gist:"方向：往～",rule:"名詞＋へ。讀作 <code>e</code>。強調<b>移動的方向</b>，多可與「に」互換；但「に」偏重到達點，「へ」偏重朝向。<code>へのプレゼント</code> 這種接名詞的形式只有へ可用。",ex:[
+  {j:"来年日本【へ】行きます。",k:"らいねんにほんへいきます。",z:"明年要去日本。"},
+  {j:"こちら【へ】どうぞ。",k:"こちらへどうぞ。",z:"請往這邊走。"},
+  {j:"母【へ】手紙を書きました。",k:"ははへてがみをかきました。",z:"寫了信給媽媽。"},
+  {j:"明日どこ【へ】行きますか。",k:"あしたどこへいきますか。",z:"明天要去哪裡？"},
+  {j:"船は南【へ】向かっています。",k:"ふねはみなみへむかっています。",z:"船正朝南方前進。",n:"強調朝向"}]},
+ {p:"で",r:"de",gist:"動作場所・手段・材料・原因・範圍",rule:"名詞＋で。① 動作發生的場所 ② 交通工具・工具・語言 ③ 材料（<code>木で作る</code>）④ 原因（<code>風邪で</code>）⑤ 範圍（<code>クラスで一番</code>）⑥ 期限・數量（<code>三日で</code>）。",ex:[
+  {j:"図書館【で】勉強します。",k:"としょかんでべんきょうします。",z:"在圖書館唸書。",n:"動作場所"},
+  {j:"バス【で】学校へ行きます。",k:"バスでがっこうへいきます。",z:"搭公車去學校。",n:"交通手段"},
+  {j:"風邪【で】会社を休みました。",k:"かぜでかいしゃをやすみました。",z:"因為感冒向公司請假。",n:"原因"},
+  {j:"日本語【で】話してください。",k:"にほんごではなしてください。",z:"請用日文說。",n:"手段・語言"},
+  {j:"クラス【で】一番背が高いです。",k:"クラスでいちばんせがたかいです。",z:"在班上個子最高。",n:"範圍"}]},
+ {p:"と",r:"to",gist:"並列・共同・引用",rule:"名詞＋と。① 完全列舉「和」（<code>AとB</code>，只用於名詞）② 共同動作對象（<code>友達と</code>）③ 引用（<code>～と言う・と思う</code>）④ 條件（動詞辭書形＋と，必然結果）。",ex:[
+  {j:"パン【と】牛乳を買いました。",k:"パンとぎゅうにゅうをかいました。",z:"買了麵包和牛奶。",n:"完全列舉，只有這兩樣"},
+  {j:"友達【と】映画を見ます。",k:"ともだちとえいがをみます。",z:"和朋友一起看電影。"},
+  {j:"彼は「行かない」【と】言いました。",k:"かれは「いかない」といいました。",z:"他說「不去」。",n:"引用"},
+  {j:"春になる【と】、桜が咲きます。",k:"はるになると、さくらがさきます。",z:"一到春天，櫻花就會開。",n:"條件：必然的結果"},
+  {j:"明日は雨だ【と】思います。",k:"あしたはあめだとおもいます。",z:"我想明天會下雨。",n:"～と思う"}]},
+ {p:"から",r:"kara",gist:"起點：從～／因為～",rule:"名詞＋から（時間・場所起點、來源）；普通形／です・ます形＋から（<b>主觀理由</b>，比「ので」直接）。<code>AからBまで</code> 成對使用。",ex:[
+  {j:"授業は九時【から】始まります。",k:"じゅぎょうはくじからはじまります。",z:"課程從九點開始。"},
+  {j:"台湾【から】来ました。",k:"たいわんからきました。",z:"我從台灣來的。"},
+  {j:"寒い【から】、窓を閉めます。",k:"さむいから、まどをしめます。",z:"因為很冷，把窗戶關上。",n:"表理由"},
+  {j:"日本酒は米【から】作ります。",k:"にほんしゅはこめからつくります。",z:"日本酒是用米做的。",n:"原料（性質改變用から，形狀不變用で）"},
+  {j:"駅【から】家まで十分かかります。",k:"えきからいえまでじゅっぷんかかります。",z:"從車站到家要十分鐘。",n:"から～まで"}]},
+ {p:"まで",r:"made",gist:"終點：到～為止",rule:"名詞＋まで（持續到某時點／某地點）。<code>までに</code> 則是<b>期限</b>「在～之前完成」，只用於一次性動作。",ex:[
+  {j:"五時【まで】働きます。",k:"ごじまではたらきます。",z:"工作到五點。",n:"持續狀態"},
+  {j:"駅【まで】歩きます。",k:"えきまであるきます。",z:"走到車站。"},
+  {j:"明日【までに】出してください。",k:"あしたまでにだしてください。",z:"請在明天之前繳交。",n:"までに＝期限"},
+  {j:"東京から大阪【まで】新幹線で行きます。",k:"とうきょうからおおさかまでしんかんせんでいきます。",z:"從東京搭新幹線到大阪。"},
+  {j:"子供【まで】その歌を知っています。",k:"こどもまでそのうたをしっています。",z:"連小孩都知道那首歌。",n:"極端例「連～都」"}]},
+ {p:"より",r:"yori",gist:"比較的基準：比～",rule:"名詞／普通形＋より。句型 <code>AはBより＋形容詞</code>＝A比B…；<code>AよりBのほうが～</code>＝B比A…。書信中亦作「寄件人」。",ex:[
+  {j:"今日は昨日【より】寒いです。",k:"きょうはきのうよりさむいです。",z:"今天比昨天冷。"},
+  {j:"電車【より】バスのほうが安いです。",k:"でんしゃよりバスのほうがやすいです。",z:"公車比電車便宜。"},
+  {j:"思った【より】簡単でした。",k:"おもったよりかんたんでした。",z:"比想像中簡單。"},
+  {j:"私は姉【より】背が高いです。",k:"わたしはあねよりせがたかいです。",z:"我比姊姊高。"},
+  {j:"何【より】健康が大切です。",k:"なによりけんこうがたいせつです。",z:"健康比什麼都重要。"}]},
+ {p:"の",r:"no",gist:"所屬・修飾・同位・名詞化",rule:"名詞＋の＋名詞。① 所有・所屬 ② 性質限定（<code>日本語の先生</code>）③ 同位語（<code>友達の田中さん</code>）④ 動詞普通形＋の＝名詞化 ⑤ 代替名詞（<code>赤いの</code>＝紅色的那個）。",ex:[
+  {j:"これは私【の】本です。",k:"これはわたしのほんです。",z:"這是我的書。"},
+  {j:"日本語【の】先生は山田さんです。",k:"にほんごのせんせいはやまださんです。",z:"日文老師是山田先生。"},
+  {j:"走る【の】が速いです。",k:"はしるのがはやいです。",z:"跑得很快。",n:"動詞名詞化"},
+  {j:"友達【の】田中さんです。",k:"ともだちのたなかさんです。",z:"這位是我朋友田中。",n:"同位語"},
+  {j:"もっと安い【の】はありませんか。",k:"もっとやすいのはありませんか。",z:"有沒有更便宜的？",n:"の代替名詞"}]},
+ {p:"や",r:"ya",gist:"部分列舉：～啦～啦",rule:"名詞＋や＋名詞（＋など）。只舉出<b>其中幾項</b>，暗示還有其他；「と」則是全部列舉。常與「など」搭配。",ex:[
+  {j:"机の上に本【や】ノートがあります。",k:"つくえのうえにほんやノートがあります。",z:"桌上有書和筆記本之類的東西。"},
+  {j:"週末は掃除【や】洗濯をします。",k:"しゅうまつはそうじやせんたくをします。",z:"週末做打掃、洗衣等家事。"},
+  {j:"京都【や】大阪へ行きたいです。",k:"きょうとやおおさかへいきたいです。",z:"想去京都、大阪等地。"},
+  {j:"かばんの中に財布【や】鍵などがあります。",k:"かばんのなかにさいふやかぎなどがあります。",z:"包包裡有錢包、鑰匙等東西。",n:"や～など 常搭配"},
+  {j:"日本語【や】英語が話せます。",k:"にほんごやえいごがはなせます。",z:"會說日文、英文等語言。"}]}
+]},
+{g:"副助詞",gn:"附加語氣與限定，可疊在其他助詞之上",items:[
+ {p:"も",r:"mo",gist:"也・都・竟然",rule:"名詞＋も（取代は・が・を；に・で・と則作 <code>にも・でも・とも</code>）。① 同類追加「也」② 疑問詞＋も＋否定＝全面否定 ③ 數量＋も＝強調「竟然這麼多」。",ex:[
+  {j:"私【も】学生です。",k:"わたしもがくせいです。",z:"我也是學生。"},
+  {j:"朝から何【も】食べていません。",k:"あさからなにもたべていません。",z:"從早上什麼都沒吃。",n:"疑問詞＋も＋否定"},
+  {j:"三時間【も】待ちました。",k:"さんじかんもまちました。",z:"竟然等了三個小時。",n:"強調數量之多"},
+  {j:"昨日【も】今日【も】忙しいです。",k:"きのうもきょうもいそがしいです。",z:"昨天和今天都很忙。",n:"も～も 並列"},
+  {j:"台北に【も】支店があります。",k:"タイペイにもしてんがあります。",z:"台北也有分店。",n:"に＋も＝にも"}]},
+ {p:"だけ",r:"dake",gist:"只有（中性陳述）",rule:"名詞／動詞普通形＋だけ。單純陳述數量或範圍的限定，後接<b>肯定句</b>亦可。可與を、が省略併用（<code>これだけください</code>）。",ex:[
+  {j:"一つ【だけ】ください。",k:"ひとつだけください。",z:"請給我一個就好。"},
+  {j:"買いません、見る【だけ】です。",k:"かいません、みるだけです。",z:"不買，只是看看。"},
+  {j:"日曜日【だけ】休みます。",k:"にちようびだけやすみます。",z:"只有星期天休息。"},
+  {j:"少し【だけ】待ってください。",k:"すこしだけまってください。",z:"請稍等一下下就好。"},
+  {j:"あなた【だけ】に話します。",k:"あなただけにはなします。",z:"只告訴你一個人。",n:"だけ＋に，語序不可顛倒"}]},
+ {p:"しか",r:"shika",gist:"只有～（帶「不足」語感）",rule:"名詞＋しか＋<b>否定</b>。必定與否定形呼應，語感是「僅僅只有…（覺得不夠）」。取代は・が・を，其他助詞則作 <code>にしか・でしか</code>。",ex:[
+  {j:"財布に千円【しか】ありません。",k:"さいふにせんえんしかありません。",z:"錢包裡只有一千日圓。"},
+  {j:"一人【しか】来ませんでした。",k:"ひとりしかきませんでした。",z:"只來了一個人。"},
+  {j:"日本語で【しか】話せません。",k:"にほんごでしかはなせません。",z:"只能用日文交談。",n:"でしか＝で＋しか"},
+  {j:"彼は野菜【しか】食べません。",k:"かれはやさいしかたべません。",z:"他只吃蔬菜。"},
+  {j:"あと五分【しか】ありません。",k:"あとごふんしかありません。",z:"只剩五分鐘了。",n:"帶「不夠」的語感"}]},
+ {p:"ばかり",r:"bakari",gist:"淨是・剛剛",rule:"① 名詞＋ばかり＝淨是、老是（帶負面評價）② 動詞<code>た形</code>＋ばかり＝剛做完 ③ 數量＋ばかり＝大約（較文言）。",ex:[
+  {j:"弟はゲーム【ばかり】しています。",k:"おとうとはゲームばかりしています。",z:"弟弟老是在打電動。"},
+  {j:"今起きた【ばかり】です。",k:"いまおきたばかりです。",z:"我剛起床。",n:"た形＋ばかり"},
+  {j:"甘いもの【ばかり】食べないで。",k:"あまいものばかりたべないで。",z:"別淨吃甜食。"},
+  {j:"彼は文句【ばかり】言っています。",k:"かれはもんくばかりいっています。",z:"他老是在抱怨。",n:"負面評價"},
+  {j:"この会社は若い人【ばかり】です。",k:"このかいしゃはわかいひとばかりです。",z:"這家公司清一色是年輕人。"}]},
+ {p:"ぐらい",r:"gurai",gist:"大約・程度",rule:"數量詞＋ぐらい／くらい＝大約（時間長度、數量；<b>時間點</b>用「ごろ」）。亦可表示程度比喻（<code>～ぐらい＋形容詞</code>）。兩種讀音皆可。",ex:[
+  {j:"三十分【ぐらい】かかります。",k:"さんじゅっぷんぐらいかかります。",z:"大概要花三十分鐘。"},
+  {j:"どの【くらい】日本語を勉強しましたか。",k:"どのくらいにほんごをべんきょうしましたか。",z:"你學日文學了多久？"},
+  {j:"泣きたい【くらい】嬉しいです。",k:"なきたいくらいうれしいです。",z:"高興得想哭。",n:"程度比喻"},
+  {j:"毎日一時間【ぐらい】運動します。",k:"まいにちいちじかんぐらいうんどうします。",z:"每天運動大約一小時。"},
+  {j:"これ【くらい】の大きさです。",k:"これくらいのおおきさです。",z:"大概這麼大。",n:"くらいの＋名詞"}]},
+ {p:"ほど",r:"hodo",gist:"程度・沒有～那麼～",rule:"① 數量＋ほど＝大約（較ぐらい正式）② <code>AはBほど～ない</code>＝A沒有B那麼… ③ <code>～ば～ほど</code>＝越…越…。",ex:[
+  {j:"一時間【ほど】待ちました。",k:"いちじかんほどまちました。",z:"等了約一小時。"},
+  {j:"今日は昨日【ほど】寒くないです。",k:"きょうはきのうほどさむくないです。",z:"今天沒有昨天那麼冷。",n:"ほど～ない"},
+  {j:"話せば話す【ほど】面白いです。",k:"はなせばはなすほどおもしろいです。",z:"越聊越有趣。",n:"ば形＋辭書形＋ほど"},
+  {j:"会場に五十人【ほど】集まりました。",k:"かいじょうにごじゅうにんほどあつまりました。",z:"會場聚集了約五十人。"},
+  {j:"彼【ほど】上手な人はいません。",k:"かれほどじょうずなひとはいません。",z:"沒有人比他更厲害。"}]},
+ {p:"など",r:"nado",gist:"～等等・之類的",rule:"名詞＋など，常接在「や」之後。① 舉例並暗示還有其他 ② 帶輕視或謙遜語氣（<code>私などには…</code>）。口語作「なんか」。",ex:[
+  {j:"りんごやバナナ【など】を買いました。",k:"りんごやバナナなどをかいました。",z:"買了蘋果、香蕉等水果。"},
+  {j:"冗談【など】言わないでください。",k:"じょうだんなどいわないでください。",z:"請別開玩笑。",n:"輕視語氣"},
+  {j:"私【など】にはできません。",k:"わたしなどにはできません。",z:"像我這種人做不到。",n:"謙遜語氣"},
+  {j:"趣味は読書や映画【など】です。",k:"しゅみはどくしょやえいがなどです。",z:"興趣是閱讀、看電影等。"},
+  {j:"お金【など】いりません。",k:"おかねなどいりません。",z:"錢什麼的我不需要。",n:"口語可換成「なんか」"}]},
+ {p:"でも",r:"demo",gist:"～之類的・連～都",rule:"① 名詞＋でも＝舉例提議「～之類的」② 極端例子「連～都」③ 疑問詞＋でも＝任何都（<code>いつでも・どこでも・誰でも</code>）。",ex:[
+  {j:"お茶【でも】飲みませんか。",k:"おちゃでものみませんか。",z:"要不要喝杯茶什麼的？",n:"委婉提議"},
+  {j:"この問題は子供【でも】分かります。",k:"このもんだいはこどもでもわかります。",z:"這問題連小孩都懂。"},
+  {j:"いつ【でも】来てください。",k:"いつでもきてください。",z:"隨時歡迎過來。",n:"疑問詞＋でも"},
+  {j:"映画【でも】見に行きましょう。",k:"えいがでもみにいきましょう。",z:"去看個電影之類的吧。"},
+  {j:"この仕事は誰【でも】できます。",k:"このしごとはだれでもできます。",z:"這工作誰都做得來。"}]}
+]},
+{g:"接續助詞",gn:"連接前後兩個句子，表示因果或逆接",items:[
+ {p:"が",r:"ga",sm:false,gist:"逆接：雖然～但是（禮貌）",rule:"句子（多用です・ます形）＋が＋句子。① 逆接「但是」② 開場白緩衝，不含轉折意味（<code>すみませんが…</code>）。比「けど」正式。",ex:[
+  {j:"高いです【が】、買います。",k:"たかいですが、かいます。",z:"雖然貴，還是買。"},
+  {j:"すみません【が】、駅はどこですか。",k:"すみませんが、えきはどこですか。",z:"不好意思，請問車站在哪裡？",n:"開場緩衝，非轉折"},
+  {j:"日本語は難しいです【が】、面白いです。",k:"にほんごはむずかしいですが、おもしろいです。",z:"日文很難，但很有趣。"},
+  {j:"もしもし、田中です【が】、山田さんはいますか。",k:"もしもし、たなかですが、やまださんはいますか。",z:"喂，我是田中，請問山田先生在嗎？",n:"電話開場的緩衝"},
+  {j:"頑張りました【が】、だめでした。",k:"がんばりましたが、だめでした。",z:"雖然努力了，但還是不行。"}]},
+ {p:"けど",r:"kedo",gist:"逆接（口語）",rule:"普通形＋けど。＝が的口語形，正式度：<code>けど ＜ けれど ＜ けれども ＜ が</code>。也可放句尾表示欲言又止。",ex:[
+  {j:"行きたい【けど】、時間がない。",k:"いきたいけど、じかんがない。",z:"想去，但沒時間。"},
+  {j:"安い【けど】、あまりよくない。",k:"やすいけど、あまりよくない。",z:"雖然便宜，但不太好。"},
+  {j:"電話した【けど】、出なかった。",k:"でんわしたけど、でなかった。",z:"打了電話，但沒人接。"},
+  {j:"まだ習っていない【けど】、やってみます。",k:"まだならっていないけど、やってみます。",z:"雖然還沒學過，但我試試看。"},
+  {j:"ちょっと聞きたいことがあるんだ【けど】…",k:"ちょっとききたいことがあるんだけど…",z:"我有點事想問你…",n:"句尾けど＝欲言又止的緩衝"}]},
+ {p:"ので",r:"node",gist:"因為（客觀・委婉）",rule:"普通形＋ので（<b>名詞・な形容詞＋な</b>ので）。陳述客觀原因，語氣柔和禮貌，適合請求或說明；不可接命令、勸誘等強烈句尾。",ex:[
+  {j:"用事がある【ので】、先に帰ります。",k:"ようじがあるので、さきにかえります。",z:"因為有事，我先回去了。"},
+  {j:"雨な【ので】、試合は中止です。",k:"あめなので、しあいはちゅうしです。",z:"因為下雨，比賽取消。",n:"名詞＋な＋ので"},
+  {j:"静かな【ので】、よく眠れます。",k:"しずかなので、よくねむれます。",z:"因為很安靜，睡得很好。",n:"な形容詞＋な＋ので"},
+  {j:"電車が遅れた【ので】、遅刻しました。",k:"でんしゃがおくれたので、ちこくしました。",z:"因為電車誤點所以遲到了。"},
+  {j:"頭が痛い【ので】、早退してもいいですか。",k:"あたまがいたいので、そうたいしてもいいですか。",z:"因為頭痛，可以早退嗎？",n:"請求時用ので較禮貌"}]},
+ {p:"のに",r:"noni",gist:"逆接：明明～卻～",rule:"普通形＋のに（<b>名詞・な形容詞＋な</b>のに）。表示結果與預期相反，帶有意外、不滿或惋惜的情緒；後句不接意志、命令。",ex:[
+  {j:"薬を飲んだ【のに】、治りません。",k:"くすりをのんだのに、なおりません。",z:"明明吃了藥卻沒好。"},
+  {j:"高い【のに】、おいしくない。",k:"たかいのに、おいしくない。",z:"明明很貴卻不好吃。"},
+  {j:"日曜日な【のに】、働いています。",k:"にちようびなのに、はたらいています。",z:"明明是星期天卻在工作。",n:"名詞＋な＋のに"},
+  {j:"約束した【のに】、彼は来ませんでした。",k:"やくそくしたのに、かれはきませんでした。",z:"明明約好了，他卻沒來。",n:"含不滿的情緒"},
+  {j:"まだ九月な【のに】、寒いですね。",k:"まだくがつなのに、さむいですね。",z:"明明才九月卻很冷呢。"}]},
+ {p:"し",r:"shi",gist:"列舉理由：又～又～",rule:"普通形＋し。並列<b>兩個以上</b>的理由或性質，暗示「還有其他原因」。常用 <code>～し、～し、（だから）…</code>。",ex:[
+  {j:"安い【し】、おいしい【し】、この店が好きです。",k:"やすいし、おいしいし、このみせがすきです。",z:"又便宜又好吃，我喜歡這家店。"},
+  {j:"雨だ【し】、今日は家にいます。",k:"あめだし、きょうはいえにいます。",z:"又下雨，今天就待在家。"},
+  {j:"頭も痛い【し】、熱もあります。",k:"あたまもいたいし、ねつもあります。",z:"頭痛，還發燒。"},
+  {j:"彼は親切だ【し】、頭もいいです。",k:"かれはしんせつだし、あたまもいいです。",z:"他人親切，頭腦又好。",n:"な形容詞・名詞＋だ＋し"},
+  {j:"時間もない【し】、お金もない。",k:"じかんもないし、おかねもない。",z:"既沒時間，也沒錢。"}]}
+]},
+{g:"終助詞",gn:"置於句尾，決定說話者的語氣與態度",items:[
+ {p:"か",r:"ka",gist:"疑問・邀約・選擇",rule:"句尾＋か＝疑問（口語常省略並用升調）。<code>～ませんか</code> 為邀約、<code>～ましょうか</code> 為提議。夾在名詞間 <code>AかB</code>＝或。",ex:[
+  {j:"これは何です【か】。",k:"これはなんですか。",z:"這是什麼？"},
+  {j:"一緒に行きません【か】。",k:"いっしょにいきませんか。",z:"要不要一起去？",n:"否定疑問＝邀約"},
+  {j:"コーヒー【か】紅茶にします。",k:"コーヒーかこうちゃにします。",z:"要咖啡或紅茶。",n:"並列選擇"},
+  {j:"誰【か】来ましたよ。",k:"だれかきましたよ。",z:"有人來了喔。",n:"疑問詞＋か＝不確定的某人事物"},
+  {j:"窓を開けましょう【か】。",k:"まどをあけましょうか。",z:"要我把窗戶打開嗎？",n:"ましょうか＝提議協助"}]},
+ {p:"ね",r:"ne",gist:"尋求同意・確認",rule:"句尾＋ね。認為對方也<b>知道或有同感</b>時使用，拉近距離；升調時為確認「對吧？」。與よ相反，資訊為雙方共有。",ex:[
+  {j:"いい天気です【ね】。",k:"いいてんきですね。",z:"天氣真好呢。"},
+  {j:"明日は三時です【ね】。",k:"あしたはさんじですね。",z:"明天三點，對吧？",n:"確認"},
+  {j:"この料理、おいしいです【ね】。",k:"このりょうり、おいしいですね。",z:"這道菜真好吃呢。"},
+  {j:"そうです【ね】、そうしましょう。",k:"そうですね、そうしましょう。",z:"說得也是，就那麼辦吧。"},
+  {j:"ちょっと待って【ね】。",k:"ちょっとまってね。",z:"等我一下喔。",n:"柔化請求"}]},
+ {p:"よ",r:"yo",gist:"告知對方不知道的事",rule:"句尾＋よ。傳達<b>對方尚不知道</b>的資訊、提醒或強調主張。對上司過度使用會顯得失禮；<code>～ですよね</code> 可柔化語氣。",ex:[
+  {j:"その本、面白いです【よ】。",k:"そのほん、おもしろいですよ。",z:"那本書很有趣喔。"},
+  {j:"もう時間です【よ】。",k:"もうじかんですよ。",z:"已經到時間囉。",n:"提醒"},
+  {j:"心配しないで、大丈夫です【よ】。",k:"しんぱいしないで、だいじょうぶですよ。",z:"別擔心，沒問題的。"},
+  {j:"そこ、危ないです【よ】。",k:"そこ、あぶないですよ。",z:"那裡很危險喔。",n:"警告提醒"},
+  {j:"私も行きます【よ】。",k:"わたしもいきますよ。",z:"我也要去喔。"}]},
+ {p:"な",r:"na",gist:"感嘆・禁止・親暱叮嚀",rule:"① 動詞<code>辭書形</code>＋な＝強烈禁止（男性、告示）② 普通形＋な（あ）＝自言自語的感嘆 ③ 對親近者的柔和叮嚀。",ex:[
+  {j:"ここに入る【な】。",k:"ここにはいるな。",z:"禁止進入。",n:"辭書形＋な＝禁止"},
+  {j:"いい天気だ【な】。",k:"いいてんきだな。",z:"天氣真好啊。",n:"感嘆"},
+  {j:"早く帰ろう【な】。",k:"はやくかえろうな。",z:"早點回去吧。",n:"對親近者的柔和叮嚀"},
+  {j:"そんなに急ぐ【な】。",k:"そんなにいそぐな。",z:"別那麼急。",n:"禁止，語氣強硬"},
+  {j:"あの映画、面白かった【な】。",k:"あのえいが、おもしろかったな。",z:"那部電影真有趣啊。",n:"自言自語的回想"}]}
+]}];
+
+/* ── render ── */
+const list=document.getElementById('list'), chips=document.getElementById('chips');
+const ICON='<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 1.5v2a8.5 8.5 0 0 1 0 17v2a10.5 10.5 0 0 0 0-21z"/></svg>';
+const clean=s=>s.replace(/[【】]/g,'');
+const mark=s=>s.replace(/【(.+?)】/g,'<span class="mk">$1</span>');
+
+let filter='all';
+function render(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  list.innerHTML='';let count=0;
+  DATA.forEach(gp=>{
+    if(filter!=='all'&&filter!==gp.g)return;
+    const hit=gp.items.filter(it=>{
+      if(!q)return true;
+      const hay=(it.p+it.r+it.gist+it.rule+it.ex.map(e=>e.j+e.k+e.z+(e.n||'')).join('')).toLowerCase();
+      return hay.includes(q);
+    });
+    if(!hit.length)return;count+=hit.length;
+    const h=document.createElement('div');h.className='group';
+    h.innerHTML=`<b class="jp">${gp.g}</b><i>${gp.gn}</i><hr>`;list.appendChild(h);
+    hit.forEach(it=>{
+      const c=document.createElement('section');c.className='card';
+      c.innerHTML=`
+      <div class="cell">
+        <div class="glyph jp${it.p.length>1?' sm':''}">${it.p}</div>
+        <div class="romaji">${it.r}</div>
+      </div>
+      <div class="body">
+        <p class="gist">${it.gist}</p>
+        <p class="rule">${it.rule}</p>
+        <ol>${it.ex.map(e=>`
+          <li>
+            <span class="num"></span>
+            <div class="ex">
+              <div class="sent jp">${mark(e.j)}</div>
+              <div class="kana jp">${e.k}</div>
+              <div class="zh">${e.z}</div>
+              ${e.n?`<div class="note">▸ ${e.n}</div>`:''}
+            </div>
+            <button class="play" data-say="${clean(e.j)}" aria-label="播放發音">${ICON}</button>
+          </li>`).join('')}
+        </ol>
+        <button class="allbtn" data-all="1">▶ 連續播放五個例句</button>
+      </div>`;
+      list.appendChild(c);
+    });
+  });
+  if(!count)list.innerHTML='<p class="empty">找不到符合的助詞，換個關鍵字試試。</p>';
+}
+['all',...DATA.map(g=>g.g)].forEach(k=>{
+  const b=document.createElement('button');b.className='chip';b.textContent=k==='all'?'全部':k;
+  b.setAttribute('aria-pressed',k==='all');
+  b.onclick=()=>{filter=k;[...chips.children].forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');stop();render();};
+  chips.appendChild(b);
+});
+document.getElementById('q').addEventListener('input',render);
+render();
+
+/* ── speech ── */
+const synth=window.speechSynthesis;
+let jaVoice=null,keep=null,current=null,queue=[];
+function pick(){
+  if(!synth)return;
+  const v=synth.getVoices();
+  if(!v.length)return;
+  jaVoice=v.find(x=>/^ja/i.test(x.lang)&&/Google|Kyoko|Otoya|O-ren|Hattori|Ayumi/i.test(x.name))
+        ||v.find(x=>/^ja/i.test(x.lang))||null;
+  document.getElementById('warn').style.display=jaVoice?'none':'block';
+}
+if(synth){pick();synth.onvoiceschanged=pick;let t=0;const iv=setInterval(()=>{pick();if(jaVoice||++t>10)clearInterval(iv);},400);}
+else document.getElementById('warn').style.display='block';
+
+function stop(){
+  queue=[];if(keep){clearInterval(keep);keep=null;}
+  if(synth)synth.cancel();
+  if(current){current.classList.remove('speaking');current=null;}
+}
+function say(text,li,after){
+  if(!synth)return;
+  synth.cancel();
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='ja-JP';if(jaVoice)u.voice=jaVoice;
+    u.rate=parseFloat(document.getElementById('rate').value);u.pitch=1;
+    if(current)current.classList.remove('speaking');
+    current=li;li&&li.classList.add('speaking');
+    u.onend=u.onerror=()=>{
+      if(keep){clearInterval(keep);keep=null;}
+      li&&li.classList.remove('speaking');if(current===li)current=null;
+      if(after)setTimeout(after,320);
+    };
+    if(keep)clearInterval(keep);
+    keep=setInterval(()=>{if(synth.speaking){synth.pause();synth.resume();}else{clearInterval(keep);keep=null;}},8000);
+    if(synth.paused)synth.resume();
+    synth.speak(u);
+  },80);
+}
+function runQueue(){
+  const next=queue.shift();
+  if(!next)return;
+  say(next.t,next.li,runQueue);
+}
+document.addEventListener('click',e=>{
+  const p=e.target.closest('.play');
+  if(p){queue=[];say(p.dataset.say,p.closest('li'));return;}
+  const a=e.target.closest('.allbtn');
+  if(a){
+    stop();
+    queue=[...a.parentElement.querySelectorAll('.play')].map(b=>({t:b.dataset.say,li:b.closest('li')}));
+    runQueue();
+  }
+});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+</script>
+</body>
+</html>
